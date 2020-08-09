@@ -27,13 +27,13 @@ updatedSlider.forEach(item => {
 //Блок с анимацие. Меняет свойство transform в течении заданного времени
 let animateDuration = 0
 const sliderAnimateToRight = () => {
-    let movingSlider = setInterval(frame, 10)
+    let movingSlider = setInterval(frame, 5)
 
     function frame() {
         if (animateDuration === sliderWidth * count) { //В случай если продолжительность совподает с текущей позицеей слайдера - анимация останавливается
             clearInterval(movingSlider)
         } else {
-            animateDuration += 10
+            animateDuration += 5
             slider.style.transform = `translateX(-${animateDuration}px)`
             if (animateDuration === slider.offsetWidth - sliderWidth) { // Если слайд последний (дубликат первого), значит сбрасываев значение продолжительности
                 animateDuration = 0
@@ -43,7 +43,7 @@ const sliderAnimateToRight = () => {
 
 }
 const sliderAnimateToLeft = () => {
-    let movingSlider = setInterval(frame, 10)
+    let movingSlider = setInterval(frame, 5)
 
     function frame() {
         if (animateDuration === sliderWidth * count) {
@@ -51,7 +51,7 @@ const sliderAnimateToLeft = () => {
         } else if (animateDuration <= sliderWidth * count) { // Если слайдер первый, то при переходе на последний (дубликат первого) - устанавливаем позицию предппоследнего слайда
             animateDuration = slider.offsetWidth - sliderWidth
         } else {
-            animateDuration -= 10
+            animateDuration -= 5
             slider.style.transform = `translateX(-${animateDuration}px)`
         }
     }
